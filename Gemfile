@@ -56,3 +56,8 @@ gem 'devise'
 gem 'pry-rails'
 gem 'jp_prefecture' # 都道府県コードから都道府県名を変換するgem
 gem 'jquery-rails' # RailsでjQueryを使えるようにするgem
+
+
+group :production do
+  gem 'unicorn', '5.4.1'
+end 
