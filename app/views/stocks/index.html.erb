@@ -1,0 +1,52 @@
+<div class="zaiko-table">
+    <table class="table table-striped index-table">
+      <tr>
+        <th>商品名</th>
+        <th>数量</th>
+        <% if user_signed_in? %>
+        <th>薬局名</th>
+        <%end%>
+        <th>所在地</th>
+        <th>期限</th>
+        <th>状態</th>
+        <th>投稿日</th>
+        <% if user_signed_in? %>
+          <th></th>
+          <%if current_user.stocks.exists? %> 
+            <th></th>
+            <th></th>
+          <%end%>
+        <%else%>
+          <th></th>
+        <%end%>
+      </tr>
+      <% @stock.each do |stock| %>
+        <tr>            
+          <td><%= stock.product_name %></td>
+          <td>
+            <%= stock.number %><%= stock.unit%>
+          </td>
+          <% if user_signed_in? %>
+          <td><%= link_to stock.user.pharmacy_name, user_path(stock.user.id) %></td>
+          <%end%>
+          <td><%= stock.user.prefecture_code %></td>
+          <td><%= stock.expiration_year%>年<%= stock.expiration_month%>月</td>
+          <td><%= stock.status %></td>
+          <td><%= stock.created_at.to_s(:datetime_jp_index) %></td>
+          <td><%= link_to "詳細", stock_path(stock.id)%></td>
+          <% if user_signed_in?%>
+            <% if user_signed_in? && current_user.id == stock.user_id%>
+              <td><%= link_to '編集する', edit_stock_path(stock.id) %></td>
+              <td><%= link_to '削除する', stock_path(stock.id), method: :delete, data: {confirm: "一度削除したら復元出来ません。本当に削除しますか？"} %></td>
+            <%else%>
+              <%if current_user.stocks.exists? %>
+                <td></td>
+                <td></td>
+              <%end%>
+            <%end%>
+          <%end%>
+        </tr>
+      <% end %>
+    </table>
+
+</div>

@@ -1,0 +1,30 @@
+<div>
+  <%if current_user.id == @user.id %>
+    <p>ユーザーID：</p>
+    <p><%= @user.user_name %></p>
+  <%end%>
+  <br>
+  <p>薬局名：</p>
+  <p><%= @user.pharmacy_name %></p>
+  <br>
+  <p>所在地：</p>
+  <p>〒<%= @user.postal_code %></p>
+  <p><%= @user.prefecture_code %><%= @user.city %></p>
+  <br>
+  <p>電話番号：</p>
+  <p><%= @user.phone_number %></p>
+  <br>
+</div>
+<br>
+<div>
+  <%if current_user.id == @user.id %>
+    <%= link_to "編集する", edit_user_registration_path(@user.id)%>
+  <%end%>
+<br>
+<br>
+</div>
+<p>現在投稿中の医薬品：</p>
+<% @stocks.each do |stock| %>
+  <p><%= link_to stock.product_name, stock_path(stock.id) %></p>
+<%end%>
+

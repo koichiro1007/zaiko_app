@@ -1,0 +1,59 @@
+  <%= form_with model: @stock, local: true do |form|%>
+
+    <div class="product_name-label">
+      <p class="product_name-label__label">医薬品名</p>
+      <p class="product_name-label__notes">※必ず商品名、剤形、規格、ジェネリックの場合はメーカー名を記載して下さい</p>
+    </div>
+    <div class="product_name-form">
+      <%= form.text_field :product_name, class: "form-control" %><br>
+    </div>
+
+    <div class="number-label">
+      <p class="number-label__label">数量</p>
+      <p class="number-label__notes">※必ず単位も選択して下さい</p>
+    </div>
+    <div class="number-form">
+      <%= form.text_field :number, class: "form-control number-form__number" %><%= form.select :unit, [ "錠","カプセル","g","mL","包","枚","本","個","瓶","キット","ブリスター","バイアル","菅","筒","袋","その他"], {include_blank: '単位'}, class: "form-control number-form__unit"%>
+    </div>
+    <br>
+
+    <div class="expiration-label">
+      <p class="expiration-label__label">期限</p>
+    </div>
+    <div class="expiration-form">
+      <%= form.select :expiration_year, [2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,2042,2043,2044,2045,2046,2047,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100], {include_blank: '年'}, class: "form-control expiration-form__year" %>
+      <%= form.select :expiration_month, [1,2,3,4,5,6,7,8,9,10,11,12], {include_blank: '月'}, class: "form-control expiration-form__month"%><br>
+    </div>
+    <br>
+
+    <p>ロット</p>
+    <div>
+      <%= form.text_field :lot, class: "form-control" %><br>
+    </div>
+
+    <p>状態</p>
+    <div>
+      <%= form.text_field :status, class: "form-control" %><br>
+    </div>
+
+    <p>開封日</p>
+    <div class="opening-form">
+        <%= form.select :opening_year, [2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,2042,2043,2044,2045,2046,2047,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100], {include_blank: '年'}, class: "form-control opening-form__year" %>
+        <%= form.select :opening_month, [1,2,3,4,5,6,7,8,9,10,11,12], {include_blank: '月'}, class: "form-control opening-form__month" %>
+    </div>
+    <br>
+
+    <p>備考欄</p>
+    <div class="notes-form">
+      <%= form.text_area :notes, class: "form-control notes-form__notes" %><br>
+    </div>
+    <div>
+      <%= form.submit '投稿する', class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+
+<div >
+  <%= link_to 'トップページへ戻る', root_path %>
+</div>
+
