@@ -13,13 +13,13 @@
 ActiveRecord::Schema.define(version: 2021_09_10_020522) do
 
   create_table "stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "product_name", limit: 255
-    t.string "general_name", limit: 255
-    t.string "manufacturer", limit: 255
+    t.string "product_name"
+    t.string "general_name"
+    t.string "manufacturer"
     t.string "number"
-    t.string "lot", limit: 255
-    t.string "status", limit: 255
-    t.string "notes", limit: 255
+    t.string "lot"
+    t.string "status"
+    t.string "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
