@@ -234,7 +234,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 4.1)
   rails (~> 6.0.4, >= 6.0.4.1)
-  sass-rails (>= 6)
+  sass-rails (>= 2.1.2)
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
